@@ -6,42 +6,46 @@ class Weather extends Component {
     super (props);
 
     this.state = {
-      weather: 'Sunny',
-      city: 'Berlin',
-      temperature: 26,
+      city: null,
+      temperature: null,
+      weather: null,
       measurement: 'Celsius'
     };
   }
  
   measurementHandler = () => {
-    this.state.measurement ? 'Celsius' : 'Fahrenheit'
-  }
+    this.state.measurement === 'Celsius' ? 
+    this.setState({measurement: 'Fahrenheit'}) : 
+    this.setState({measurement: 'Celsius'})
+  };
 
   componentDidMount() {
     let apiKey = '643661576b7df360bb874c779f2389c8'
-    let url = `http://api.openweathermap.org/data/2.5/forecast?q=London&id=524901&APPID=${apiKey}`
     let city = 'Berlin'
+    let url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&id=524901&APPID=${apiKey}`
 
     fetch(url)
       .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState ({
-          city: responseJson.city.name
+      .then((result) => {
+        console.log(result)
+        this.setState({
+          weather: result.list[0].weather[0].main,
+          temperature: `${Math.round(result.list[0].main.temp - 273.15)}°`,
+          city: result.city.name
         })
-        console.log('test')
-        console.log(responseJson.city.name)
       })
       .catch((error) => {
         console.error(error);
       })
-    
-    let WeatherIcon   
-    if (this.state.measurement === 'Fahrenheit') {
-      this.state.temperature * 1.8 + 32  
-    }
+
+    // if (this.state.measurement === 'Fahrenheit') {
+    //   this.setState({temperature * 2})
+    // }
   }
 
   render() {
+
+ 
 
     return(
       <div>
