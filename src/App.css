@@ -1,28 +1,47 @@
-.App {
+.card {
+  display: flex;
+  margin: 3vw 3vw 0 3vw;
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
   color: white;
+  font-size: 2rem;
+  background-color: #284B63;
 }
 
-.App-title {
-  font-size: 1.5em;
+.city {
+  font-size: 3rem;
 }
 
-.App-intro {
-  font-size: large;
+.country {
+  color: grey
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+i {
+  font-size: 10rem;
+  display: block;
+  margin-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.weather {
+  margin-top: 5vh;
+  font-size: 3rem
+}
+
+.btn {
+  color: white;
+  border-color: white;
+}
+
+.col-xs-6 {
+  font-size: 1rem
 }
